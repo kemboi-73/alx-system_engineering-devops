@@ -1,2 +1,2 @@
-#!/vin/bash
-pwd
+#!/bin/bash
+ls
