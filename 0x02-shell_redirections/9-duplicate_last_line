@@ -1,0 +1,2 @@
+#!/bin/bash
+echo -e '$\nY\nP\n:wq' | vim iacta
