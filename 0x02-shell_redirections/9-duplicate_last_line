@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e '$\nY\nP\n:wq' | vim iacta
+tail -n 1 <iacta >> iacta
