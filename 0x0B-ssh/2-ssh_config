@@ -19,7 +19,7 @@ debug1: kex: server->client aes128-ctr hmac-sha1-etm@openssh.com none
 debug1: kex: client->server aes128-ctr hmac-sha1-etm@openssh.com none
 debug1: sending SSH2_MSG_KEX_ECDH_INIT
 debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
-debug1: Server host key: ECDSA bd:03:f8:6a:12:28:d6:17:85:c1:b6:91:f1:da:0f:37
+debug1: Server host key: ECDSA bd:03:f8:6a:90:d6:82:92:c1:b6:91:f1:da:0f:37
 debug1: Host '44.200.31.96' is known and matches the ECDSA host key.
 debug1: Found key in /home/sylvain/.ssh/known_hosts:1
 debug1: ssh_ecdsa_verify: signature correct
