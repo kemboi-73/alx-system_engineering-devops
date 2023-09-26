@@ -1,19 +1,9 @@
 #!/usr/bin/env bash
-# Configures an Nginx server so that /redirect_me redirects to another page.
-# The redirection is configured as a "301 Moved Permanently"
-sudo apt update
-sudo apt install -y nginx
-sudo apt install -y sed
+# This script installs the NGINX web server on my local server
+
+sudo apt-get update
+sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
-sudo chown -R "$USER":"$USER" /var/www/html/index.nginx-debian.html
-sudo echo "Hello World!"  | sudo tee /var/www/html/index.nginx-debian.html
-
-printf %s "server {
-    listen 80;
-    listen [::]:80 default_server;
-    root   /etc/nginx/html;
-    index  index.html index.htm;
-    location / { return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4; }
-}" > /etc/nginx/sites-available/default
-
-service nginx restart
+sudo echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/ permanent;' /etc/nginx/sites-available/default
+sudo service nginx restart
