@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
-
-# install nginx to create html pages
-sudo apt update -y
+# Script to setup an nginx server
+index_file=/var/www/html/index.nginx-debian.html
+sudo apt update
 sudo apt install nginx -y
-
-sudo ufw allow "Nginx HTTP"
-
-sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
-
+echo "Hello World!" > $index_file
+sudo service nginx restart
