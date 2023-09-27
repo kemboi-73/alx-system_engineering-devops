@@ -1,8 +1,30 @@
 #!/usr/bin/env bash
 # This script installs the NGINX web server on my local server
 
+# Update package list and install Nginx
 sudo apt-get update
 sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-sudo echo "Hello World!" | sudo tee /var/www/html/index.html
-sudo service nginx restart
+
+# Check if Nginx is installed and running
+if [ -x "$(command -v nginx)" ]; then
+    echo "Nginx is installed."
+else
+    echo "Nginx installation failed."
+    exit 1
+fi
+
+# Configure the default Nginx page
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Reload Nginx configuration
+sudo /etc/init.d/nginx reload
+
+# Check if Nginx returns status code 200
+http_status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost)
+if [ "$http_status" -eq 200 ]; then
+    echo "Nginx returns status code 200."
+else
+    echo "Nginx does not return status code 200."
+    exit 1
+fi
+
