@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script installs the NGINX web server on my local server
+# This script installs the NGINX web server and configures it to return "Hello World!" on the root URL.
 
 # Update package list and install Nginx
 sudo apt-get update
@@ -13,18 +13,20 @@ else
     exit 1
 fi
 
-# Configure the default Nginx page
-echo "Hello World!" | sudo tee /var/www/html/index.html
+# Create a simple HTML file with "Hello World!"
+echo "<html><body>Hello World!</body></html>" | sudo tee /var/www/html/index.html
+
+# Check if Nginx returns "Hello World!" on the root URL
+response=$(curl -s http://localhost)
+if [[ $response == *"Hello World!"* ]]; then
+    echo "Nginx returns 'Hello World!' on the root URL."
+else
+    echo "Nginx does not return 'Hello World!' on the root URL."
+    exit 1
+fi
 
 # Reload Nginx configuration
 sudo /etc/init.d/nginx reload
 
-# Check if Nginx returns status code 200
-http_status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost)
-if [ "$http_status" -eq 200 ]; then
-    echo "Nginx returns status code 200."
-else
-    echo "Nginx does not return status code 200."
-    exit 1
-fi
+echo "Script completed successfully."
 
