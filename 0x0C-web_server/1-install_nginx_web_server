@@ -1,10 +1,35 @@
 #!/usr/bin/env bash
-# install nginx to create html pages
+# Install nginx to create HTML pages
+
+# Update package list and install Nginx
 sudo apt-get -y update
 sudo apt-get -y install nginx
 
-sudo ufw allow "Nginx HTTP"
-sudo chown -R $USER:$USER /var/www/html/index.nginx-debian.html
-sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
-sudo service nginx restart
+# Check if Nginx is installed and running
+if systemctl is-active --quiet nginx; then
+    echo "Nginx is installed and running."
+else
+    echo "Nginx installation or startup failed."
+    exit 1
+fi
+
+# Change ownership of the web directory
+sudo chown -R $USER:$USER /var/www/html
+
+# Create a simple HTML file with "Hello World!"
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Restart Nginx
+sudo systemctl restart nginx
+
+# Check if Nginx returns status code 200
+http_status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost)
+if [ "$http_status" -eq 200 ]; then
+    echo "Nginx returns status code 200."
+else
+    echo "Nginx does not return status code 200."
+    exit 1
+fi
+
+echo "Script completed successfully."
 
