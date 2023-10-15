@@ -1,0 +1,47 @@
+tle: The Web Stack Unveiled: What Happens When You Type https://www.google.com and Press Enter
+
+Introduction
+
+The internet is an intricate web of technologies and protocols that make it possible for us to access websites with a simple click. When you type "https://www.google.com" into your browser and hit Enter, a complex series of steps and components come into play to fetch the desired web page. In this blog post, we will explore the journey of your request, from DNS resolution to content delivery.
+
+1. DNS Request
+
+The process begins with a DNS (Domain Name System) request. When you type "https://www.google.com" in your browser, the DNS resolver on your device initiates a query to translate the human-friendly domain name "www.google.com" into an IP address, which is the language of computers. This query usually goes through several stages of DNS resolution, from the local cache to authoritative name servers, until the IP address for Google's servers is found.
+
+2. TCP/IP
+
+Once the IP address is determined, your browser creates a connection using the Transmission Control Protocol (TCP) and Internet Protocol (IP). TCP ensures reliable and ordered data delivery, while IP handles routing and addressing. Your browser sends a series of packets containing the request to Google's IP address.
+
+3. Firewall
+
+Many organizations and internet service providers implement firewalls to secure their networks. These firewalls examine incoming and outgoing traffic for threats and may block certain requests. If your request passes through a firewall, it proceeds to the next step.
+
+4. HTTPS/SSL
+
+Google enforces a secure connection using HTTPS (Hypertext Transfer Protocol Secure), which is an extension of HTTP. It provides encryption and authentication through SSL (Secure Sockets Layer) or its successor, TLS (Transport Layer Security). Your browser and Google's servers perform a handshake to exchange encryption keys, ensuring that your data remains confidential during transit.
+
+5. Load-Balancer
+
+Large-scale websites like Google employ load balancers to distribute incoming traffic across multiple web servers. This ensures even distribution of the workload and redundancy for fault tolerance. The load balancer examines your request and forwards it to an available web server.
+
+6. Web Server
+
+Upon reaching a web server, your request is processed. The web server receives your request, interprets it, and generates a response, which is typically an HTML page. Google uses a vast network of web servers to handle user requests efficiently.
+
+7. Application Server
+
+In the case of dynamic web applications, an application server comes into play. It interacts with databases, processes business logic, and generates dynamic content. Google's search engine likely uses application servers to provide personalized search results and other dynamic features.
+
+8. Database
+
+For services that rely on storing and retrieving data, such as Google's search results or user information, databases are crucial. The application server communicates with the database server to fetch or update data.
+
+Conclusion
+
+The journey of your request, from typing "https://www.google.com" in your browser to receiving the search results, involves a complex orchestration of technologies and components. DNS resolution, TCP/IP communication, firewalls, HTTPS/SSL encryption, load balancers, web servers, application servers, and databases work in tandem to make the internet experience seamless and secure.
+
+Understanding these fundamental components of the web stack is essential for anyone working in software engineering or related fields. It not only aids in troubleshooting issues but also provides a deeper appreciation for the technology that powers the digital world.
+
+So, the next time you enter a URL in your browser, remember the intricate journey it takes behind the scenes to deliver the content you seek.
+
+Published on Medium: [https://medium.com/@kemboimichael52/the-web-stack-unveiled-what-happens-when-you-type-https-www-google-com-and-press-enter-d72976b75d8b]
